@@ -1,1 +1,0 @@
-curl -X POST http://localhost:8000/dino -H "Content-Type: application/json" -d '{ "name": "Tyrannosaurus Rex", "desc": "A mounstrous carnivore of the cretaceous."'
