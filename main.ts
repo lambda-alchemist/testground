@@ -30,7 +30,7 @@ router
 		context.response.body = dino;
 	})
 	.post("/api/dino", async (context) => {
-		const { name, desc } = await context.request.body("json").value;
+		const { name , desc } = context.request.body("json").value;
 		const result = await prisma.dino.create({
 			data: {
 				name,
