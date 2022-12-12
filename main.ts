@@ -15,12 +15,14 @@ const app = new Application();
 const router = new Router();
 
 router
-	.get("/api", (context) => { context.response.body = "Welcome to the Dino API!"})
-	.get("/api/dino", async (context) => {
+	.get("/api/v1", (context) => {
+		context.response.body = "Welcome to the Dino API!"
+	})
+	.get("/api/v1/dino", async (context) => {
 		const dinos = await prisma.dino.findMany();
 		context.response.body = dinos;
 	})
-	.get("/api/dino/:id", async (context) => {
+	.get("/api/v1/dino/:id", async (context) => {
 		const { id } = context.params;
 		const dino = await prisma.dino.findUnique({
 			where: {
@@ -29,7 +31,7 @@ router
 		});
 		context.response.body = dino;
 	})
-	.post("/api/dino", async (context) => {
+	.post("/api/v1/dino", async (context) => {
 		const { name , desc } = context.request.body("json").value;
 		const result = await prisma.dino.create({
 			data: {
@@ -39,7 +41,7 @@ router
 		})
 		context.response.body = result;
 	})
-	.delete("/api/dino/:id", async (context) => {
+	.delete("/api/v1/dino/:id", async (context) => {
 		const { id } = context.params;
 		const dino = await prisma.dino.delete({
 			where: {

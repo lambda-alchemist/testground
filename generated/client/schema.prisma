@@ -2,18 +2,18 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
-  previewFeatures = ["deno"]
-  output = "../generated/client"
+	provider = "prisma-client-js"
+	previewFeatures = ["deno"]
+	output = "../generated/client"
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+	provider = "postgresql"
+	url      = env("DATABASE_URL")
 }
 
 model dino {
-  id    Int     @id @default(autoincrement())
-  name  String  @unique
-  desc  String
+	id    Int     @id @default(autoincrement())
+	name  String  @unique
+	desc  String
 }
